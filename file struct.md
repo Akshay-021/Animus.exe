@@ -4,9 +4,14 @@
 JanVaani AI/
 ├── README.md
 ├── file struct.md
+├── progress.md
+├── non_code_files.md
 ├── backend/
+│   ├── test_llm.py
+│   ├── test_scheme.py
 │   ├── app/
 │   │   ├── main.py
+│   │   ├── cache/
 │   │   ├── core/
 │   │   │   └── config.py
 │   │   ├── models/
@@ -20,8 +25,9 @@ JanVaani AI/
 │   │   │   └── voice.py
 │   │   ├── services/
 │   │   │   ├── crop_service.py
-│   │   │   ├── iamge_service.py
+│   │   │   ├── image_service.py
 │   │   │   ├── ollama_service.py
+│   │   │   ├── prompts.py
 │   │   │   ├── scheme_service.py
 │   │   │   ├── soil_service.py
 │   │   │   ├── translation_service.py
@@ -29,7 +35,6 @@ JanVaani AI/
 │   │   └── utils/
 │   │       ├── helpers.py
 │   │       └── logger.py
-│   └── cache/
 ├── data/
 │   ├── samples/
 │   │   └── crop_images/
@@ -37,6 +42,7 @@ JanVaani AI/
 │       ├── processed_schemes.json
 │       └── raw_schemes.json
 └── frontend/
+    ├── index.html
     ├── package.json
     ├── vite.config.js
     ├── public/
