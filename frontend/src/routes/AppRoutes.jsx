@@ -1,17 +1,12 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Assistant from "../pages/Assistant";
-import SchemeResult from "../pages/SchemeResult";
+import { Routes, Route } from "react-router-dom"
+import Home from "../pages/Home"
+import Assistant from "../pages/Assistant"
 
 export default function AppRoutes() {
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* Main page → Voice Assistant */}
-        <Route path="/" element={<Assistant />} />
-
-        {/* Optional: keep old page */}
-        <Route path="/scheme" element={<SchemeResult />} />
-      </Routes>
-    </BrowserRouter>
-  );
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/assistant" element={<Assistant />} />
+    </Routes>
+  )
 }

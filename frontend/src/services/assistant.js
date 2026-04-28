@@ -1,11 +1,13 @@
-export const sendVoiceToAssistant = async (audioBlob) => {
-  const formData = new FormData();
-  formData.append("file", audioBlob);
+const BASE_URL = "http://localhost:8000"
 
-  const res = await fetch("http://127.0.0.1:8000/assistant/voice-scheme", {
+export const sendVoice = async (audioBlob) => {
+  const formData = new FormData()
+  formData.append("file", audioBlob)
+
+  const res = await fetch(`${BASE_URL}/assistant/voice`, {
     method: "POST",
-    body: formData,
-  });
+    body: formData
+  })
 
-  return await res.json();
-};
+  return res.json()
+}
