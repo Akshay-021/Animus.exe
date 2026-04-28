@@ -1,0 +1,169 @@
+[
+  {
+    "name": "PM-KISAN",
+    "state": "All",
+    "category": "income support",
+    "eligibility": {
+      "land": "small",
+      "income": "low"
+    },
+    "benefits": "₹6000 per year in 3 installments",
+    "description": "Provides financial assistance to small and marginal farmers"
+  },
+  {
+    "name": "Pradhan Mantri Fasal Bima Yojana",
+    "state": "All",
+    "category": "insurance",
+    "eligibility": {},
+    "benefits": "Insurance coverage for crop loss due to natural calamities",
+    "description": "Protects farmers against crop failure risks"
+  },
+  {
+    "name": "Soil Health Card Scheme",
+    "state": "All",
+    "category": "soil",
+    "eligibility": {},
+    "benefits": "Free soil testing and nutrient recommendations",
+    "description": "Provides soil health reports to farmers"
+  },
+  {
+    "name": "PM Krishi Sinchai Yojana",
+    "state": "All",
+    "category": "irrigation",
+    "eligibility": {},
+    "benefits": "Subsidy for irrigation systems",
+    "description": "Improves irrigation efficiency"
+  },
+  {
+    "name": "National Agriculture Market (eNAM)",
+    "state": "All",
+    "category": "market",
+    "eligibility": {},
+    "benefits": "Online trading platform for agricultural produce",
+    "description": "Connects farmers to markets"
+  },
+  {
+    "name": "Kisan Credit Card",
+    "state": "All",
+    "category": "credit",
+    "eligibility": {},
+    "benefits": "Easy access to short-term credit",
+    "description": "Provides loans for farming needs"
+  },
+  {
+    "name": "PM Kisan Maandhan Yojana",
+    "state": "All",
+    "category": "pension",
+    "eligibility": {
+      "age": "18-40"
+    },
+    "benefits": "Monthly pension after 60 years",
+    "description": "Pension scheme for small farmers"
+  },
+  {
+    "name": "National Mission on Sustainable Agriculture",
+    "state": "All",
+    "category": "sustainability",
+    "eligibility": {},
+    "benefits": "Support for sustainable farming practices",
+    "description": "Promotes climate-resilient agriculture"
+  },
+  {
+    "name": "Paramparagat Krishi Vikas Yojana",
+    "state": "All",
+    "category": "organic",
+    "eligibility": {},
+    "benefits": "Support for organic farming",
+    "description": "Encourages organic cultivation"
+  },
+  {
+    "name": "Rashtriya Krishi Vikas Yojana",
+    "state": "All",
+    "category": "development",
+    "eligibility": {},
+    "benefits": "Funding for agriculture development projects",
+    "description": "Supports state agriculture initiatives"
+  },
+  {
+    "name": "Agriculture Infrastructure Fund",
+    "state": "All",
+    "category": "infrastructure",
+    "eligibility": {},
+    "benefits": "Loans for agri infrastructure",
+    "description": "Supports storage and logistics"
+  },
+  {
+    "name": "PM Formalisation of Micro Food Processing Enterprises",
+    "state": "All",
+    "category": "processing",
+    "eligibility": {},
+    "benefits": "Financial support for food processing units",
+    "description": "Boosts food processing sector"
+  },
+  {
+    "name": "Karnataka Raitha Siri Scheme",
+    "state": "Karnataka",
+    "category": "subsidy",
+    "eligibility": {
+      "income": "low"
+    },
+    "benefits": "Financial assistance for small farmers",
+    "description": "State support scheme"
+  },
+  {
+    "name": "Karnataka Krishi Bhagya Scheme",
+    "state": "Karnataka",
+    "category": "irrigation",
+    "eligibility": {},
+    "benefits": "Subsidy for farm ponds and irrigation",
+    "description": "Water conservation scheme"
+  },
+  {
+    "name": "National Livestock Mission",
+    "state": "All",
+    "category": "livestock",
+    "eligibility": {},
+    "benefits": "Support for livestock farming",
+    "description": "Promotes animal husbandry"
+  },
+  {
+    "name": "Blue Revolution Scheme",
+    "state": "All",
+    "category": "fisheries",
+    "eligibility": {},
+    "benefits": "Support for fisheries development",
+    "description": "Boosts fish production"
+  },
+  {
+    "name": "PM Matsya Sampada Yojana",
+    "state": "All",
+    "category": "fisheries",
+    "eligibility": {},
+    "benefits": "Financial support for fisheries sector",
+    "description": "Enhances fish production and infrastructure"
+  },
+  {
+    "name": "Sub-Mission on Agricultural Mechanization",
+    "state": "All",
+    "category": "equipment",
+    "eligibility": {},
+    "benefits": "Subsidy for farm machinery",
+    "description": "Promotes farm mechanization"
+  },
+  {
+    "name": "Seed Village Programme",
+    "state": "All",
+    "category": "seeds",
+    "eligibility": {},
+    "benefits": "Support for quality seed production",
+    "description": "Improves seed availability"
+  },
+  {
+    "name": "National Food Security Mission",
+    "state": "All",
+    "category": "production",
+    "eligibility": {},
+    "benefits": "Increase production of staple crops",
+    "description": "Supports rice, wheat, pulses"
+  }
+]
