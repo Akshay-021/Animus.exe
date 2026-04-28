@@ -1,41 +1,63 @@
 # JanVaani AI
 
-JanVaani AI is a full-stack agricultural assistance project focused on helping farmers get simple, practical recommendations for government schemes, crop issues, soil health, translation, and voice-based access.
+JanVaani AI is an AI-powered agricultural assistant designed to simplify decision-making for farmers by providing localized, practical, and easy-to-understand guidance.
 
-The project currently has a FastAPI backend, a React + Vite frontend, local data files for scheme recommendations, and an Ollama-powered LLM service for generating farmer-friendly advice.
+It bridges the gap between complex government schemes, crop issues, and real-world farmer needs through a unified, multilingual platform powered by large language models.
 
-## Current Features
+---
 
-- Scheme recommendation API using farmer details such as location, income, land size, gender, and need.
-- Local agricultural scheme data stored in `data/schemes/processed_schemes.json`.
-- Ollama integration through the local endpoint `http://localhost:11434/api/generate`.
-- Prompt templates for scheme, crop, and soil guidance.
-- JSON cleanup helper to parse LLM responses safely.
-- React frontend scaffold with routing.
-- Basic frontend page for fetching and displaying scheme recommendations.
-- Placeholder backend routes for crop, soil, translation, and voice features.
-- Placeholder frontend folders for assistant, input, result cards, voice, context, hooks, and services.
+## Key Features
+
+* AI-based scheme recommendations tailored to farmer profiles (location, income, land size, etc.)
+* LLM-powered explanations in simple, farmer-friendly language
+* Crop assistance system (in progress) for disease detection using image and parameters
+* Soil health analysis module (in progress)
+* Multi-language support (planned across the application)
+* Voice-based interaction (planned for accessibility)
+
+---
+
+## Implemented Features
+
+* End-to-end scheme recommendation system
+* FastAPI backend with structured routing and services
+* Ollama integration using the llama3 model
+* JSON parsing and response cleanup utilities
+* Basic React frontend for displaying scheme results
+
+---
+
+## In Progress
+
+* Crop disease detection module
+* Soil health recommendation system
+* Translation and voice interaction features
+* Improved frontend UI and user input flows
+
+---
 
 ## Tech Stack
 
 ### Backend
 
-- Python
-- FastAPI
-- Pydantic
-- Requests
-- Ollama with the `llama3` model
+* Python
+* FastAPI
+* Pydantic
+* Requests
+* Ollama (llama3 model)
 
 ### Frontend
 
-- React
-- Vite
-- React Router DOM
+* React
+* Vite
+* React Router DOM
 
 ### Data
 
-- JSON-based scheme data
-- Sample crop image folder for future crop analysis work
+* JSON-based government scheme dataset
+* Sample crop data for future model integration
+
+---
 
 ## Project Structure
 
@@ -69,105 +91,82 @@ JanVaani AI/
         └── utils/
 ```
 
+---
+
 ## Backend Overview
 
-The backend starts from `backend/app/main.py`. It creates a FastAPI app, enables CORS, and registers these routers:
+The backend is built using FastAPI and starts from `backend/app/main.py`. It enables CORS and registers the following routes:
 
-- `/scheme/` - implemented scheme recommendation endpoint.
-- `/crop/` - placeholder endpoint for crop feature.
-- `/soil/` - placeholder endpoint for soil feature.
-- `/translate/` - placeholder endpoint for translation feature.
-- `/voice/` - placeholder endpoint for voice feature.
+* `/scheme/` — implemented scheme recommendation endpoint
+* `/crop/` — placeholder for crop assistance
+* `/soil/` — placeholder for soil analysis
+* `/translate/` — placeholder for translation
+* `/voice/` — placeholder for voice interaction
 
 ### Scheme Recommendation Flow
 
-1. Frontend sends farmer details to `POST /scheme/`.
-2. `SchemeRequest` validates the request body.
-3. `scheme_service.py` loads `processed_schemes.json`.
-4. Schemes are filtered by farmer location.
-5. The first matching schemes are sent to Ollama with a structured prompt.
-6. The LLM response is parsed as JSON and returned to the frontend.
+1. The frontend sends farmer details to `POST /scheme/`
+2. Request is validated using a structured schema
+3. Scheme data is loaded from a local dataset
+4. Schemes are filtered based on farmer location
+5. Filtered data is sent to the LLM via Ollama
+6. Response is parsed and returned in structured JSON
 
-Expected request body:
-
-```json
-{
-  "location": "Karnataka",
-  "income": "low",
-  "land": "small",
-  "gender": "male",
-  "need": "financial support"
-}
-```
-
-Expected response shape:
-
-```json
-{
-  "schemes": [
-    {
-      "name": "",
-      "reason": "",
-      "benefits": "",
-      "steps": ""
-    }
-  ]
-}
-```
+---
 
 ## Frontend Overview
 
-The frontend is a Vite React app.
+The frontend is a React application built with Vite.
 
-- `src/main.jsx` mounts the React app.
-- `src/App.jsx` loads the route configuration.
-- `src/routes/AppRoutes.jsx` maps `/` to `SchemeResult`.
-- `src/pages/SchemeResult.jsx` contains a simple test UI for fetching scheme recommendations.
-- `src/services/api.js` contains the `fetchSchemes` API call to the FastAPI backend.
+* Routing is handled using React Router
+* A basic UI exists for fetching and displaying scheme recommendations
+* API calls are managed through a centralized service layer
+* Several components and modules are scaffolded for future features
 
-Many frontend files are currently placeholders and are ready for future implementation.
+---
 
-## Setup
+## Setup Instructions
 
-### 1. Backend
-
-From the project root:
+### Backend Setup
 
 ```powershell
 cd backend
-..\lol\Scripts\activate
+python -m venv venv
+venv\Scripts\activate
 uvicorn app.main:app --reload
 ```
 
-The API should run at:
+Backend runs at:
 
-```text
+```
 http://127.0.0.1:8000
 ```
 
-FastAPI docs should be available at:
+API documentation:
 
-```text
+```
 http://127.0.0.1:8000/docs
 ```
 
-### 2. Ollama
+---
 
-Make sure Ollama is installed, running locally, and has the `llama3` model available:
+### Ollama Setup
+
+Ensure Ollama is installed and running locally with the required model:
 
 ```powershell
 ollama run llama3
 ```
 
-The backend expects Ollama at:
+Expected endpoint:
 
-```text
+```
 http://localhost:11434/api/generate
 ```
 
-### 3. Frontend
+---
 
-From the project root:
+### Frontend Setup
 
 ```powershell
 cd frontend
@@ -175,25 +174,32 @@ npm install
 npm run dev
 ```
 
-The frontend should run on the Vite development server, usually:
+Frontend runs at:
 
-```text
+```
 http://localhost:5173
 ```
 
-## Test Scripts
+---
 
-The backend has simple manual test scripts:
+## Testing
 
-- `backend/test_llm.py` checks the Ollama service.
-- `backend/test_scheme.py` checks the scheme recommendation flow with dummy farmer data.
+* `backend/test_llm.py` — tests LLM connectivity
+* `backend/test_scheme.py` — tests scheme recommendation flow
 
-Run them from the `backend` directory after activating the Python environment.
+Run tests from the backend directory after activating the virtual environment.
+
+---
 
 ## Notes
 
-- `README.md` was previously empty and is now filled with project documentation.
-- The scheme feature is the most complete feature at this stage.
-- Crop, soil, translation, and voice routes exist but still need full request models, service integration, and frontend UI.
-- The frontend currently uses hardcoded sample farmer data in `SchemeResult.jsx`.
-- There is no formal test suite yet; current tests are manual scripts.
+* The scheme recommendation feature is currently the most complete
+* Other modules are scaffolded and under development
+* Frontend currently uses sample data for testing
+* No formal automated testing suite has been implemented yet
+
+---
+
+## Vision
+
+JanVaani AI aims to evolve into a comprehensive digital assistant for farmers, combining AI, local datasets, and multilingual interaction to provide accessible agricultural intelligence at scale.
