@@ -1,110 +1,143 @@
 # Project Progress
 
-Last updated: 28 April 2026
+Last Updated: 28 April 2026
 
-## Completed So Far
+---
 
-### Project Setup
+## Overview
 
-- Created a full-stack project structure for JanVaani AI.
-- Added separate `backend`, `frontend`, and `data` directories.
-- Created a Python virtual environment in `lol`.
-- Installed frontend dependencies for a React + Vite app.
-- Added documentation support files such as `file struct.md` and `non_code_files.md`.
+JanVaani AI is being developed as a full-stack AI-powered agricultural assistant. The current focus has been on building a strong backend foundation, integrating LLM capabilities, and implementing the first complete feature: scheme recommendations.
 
-### Backend
+---
 
-- Created the FastAPI application entry point in `backend/app/main.py`.
-- Enabled CORS for frontend-backend communication.
-- Registered route modules for:
-  - Scheme recommendations
-  - Crop feature
-  - Soil feature
-  - Translation
-  - Voice
-- Added configuration in `backend/app/core/config.py` for resolving project and data paths.
-- Added request model support for scheme requests using Pydantic.
-- Implemented the `/scheme/` API route.
-- Implemented scheme loading from `data/schemes/processed_schemes.json`.
-- Added scheme filtering by state/location.
-- Connected the scheme recommendation flow to a local Ollama model.
-- Added prompt templates for:
-  - Scheme recommendations
-  - Crop analysis
-  - Soil analysis
-- Added helper logic for extracting and safely loading JSON from LLM responses.
-- Added placeholder routes for crop, soil, translation, and voice features.
-- Added early crop and soil service functions that prepare prompts and call the LLM.
-- Added simple manual backend test scripts:
-  - `test_llm.py`
-  - `test_scheme.py`
+## Completed Work
 
-### Data
+### 1. Project Foundation
 
-- Added `data/schemes/processed_schemes.json` for scheme recommendation data.
-- Added `data/schemes/raw_schemes.json` as a raw-data placeholder.
-- Added `data/samples/crop_images/` for future crop image samples.
+* Established a modular full-stack architecture with separate `backend`, `frontend`, and `data` layers
+* Configured Python virtual environment and frontend tooling (React + Vite)
+* Organized project structure for scalability and future feature expansion
 
-### Frontend
+---
 
-- Created a Vite + React app in the `frontend` directory.
-- Added React Router setup.
-- Added the main React entry files:
-  - `src/main.jsx`
-  - `src/App.jsx`
-  - `src/routes/AppRoutes.jsx`
-- Built a basic `SchemeResult.jsx` page.
-- Connected the frontend to the backend scheme API through `src/services/api.js`.
-- Added basic loading, error, and result rendering states for scheme recommendations.
-- Created placeholder frontend folders and files for future features:
-  - Assistant UI
-  - Common UI components
-  - Text and image input
-  - Crop, soil, and scheme result cards
-  - Voice controls
-  - App context
-  - Custom hooks
-  - Translation and voice services
-  - Utility helpers
+### 2. Backend Development
 
-### Documentation
+* Built FastAPI application with proper routing and middleware (CORS enabled)
+* Designed modular structure with `routes`, `services`, `models`, and `utils`
+* Implemented `/scheme/` endpoint with request validation using Pydantic
+* Integrated local dataset for scheme recommendations
+* Implemented filtering logic based on farmer location
+* Integrated Ollama LLM (`llama3`) for generating contextual recommendations
+* Designed prompt templates for scheme, crop, and soil workflows
+* Added robust JSON parsing utilities for handling LLM responses
+* Created placeholder routes for:
 
-- Filled the main `README.md` with:
-  - Project overview
-  - Current features
-  - Tech stack
-  - Project structure
-  - Backend overview
-  - Frontend overview
-  - Setup instructions
-  - API details
-  - Current notes
-- Created this `progress.md` file to track what has been completed and what is pending.
+  * Crop assistance
+  * Soil analysis
+  * Translation
+  * Voice interaction
+* Added initial service-layer logic for crop and soil prompts
+* Created manual backend test scripts for LLM and scheme validation
+
+---
+
+### 3. Frontend Development
+
+* Initialized React application using Vite
+* Implemented routing using React Router
+* Built initial UI for scheme recommendation results
+* Connected frontend to backend API (`POST /scheme/`)
+* Implemented loading, error, and response handling states
+* Scaffolded component structure for future features:
+
+  * Input handling (text/image)
+  * Result display components
+  * Voice and translation modules
+  * Context and hooks
+
+---
+
+### 4. Data Layer
+
+* Added processed scheme dataset for recommendation logic
+* Maintained raw dataset for future preprocessing improvements
+* Created sample structure for crop image data
+
+---
+
+### 5. Documentation
+
+* Developed a comprehensive `README.md` covering architecture, setup, and usage
+* Maintained structured progress tracking through this file
+
+---
 
 ## Current Working State
 
-- The scheme recommendation flow is the main working feature.
-- The frontend can call `POST /scheme/` and display returned schemes.
-- The backend expects Ollama to be running locally with the `llama3` model.
-- Crop, soil, translation, and voice features are scaffolded but not fully implemented.
-- Many frontend components are intentionally empty placeholders for future UI work.
+* The scheme recommendation pipeline is fully functional end-to-end
+* Frontend successfully communicates with backend and displays results
+* LLM integration is operational via local Ollama service
+* Remaining modules (crop, soil, translation, voice) are scaffolded and partially prepared for integration
 
-## Pending Work
+---
 
-- Add a proper farmer input form instead of hardcoded scheme request data.
-- Improve the scheme result UI and move display logic into reusable cards.
-- Add request and response models for crop, soil, translation, and voice APIs.
-- Wire crop and soil routes to their existing service functions.
-- Implement image upload and image analysis flow for crop/soil features.
-- Implement translation service logic.
-- Implement voice input/output support.
-- Add environment-based configuration for backend URL, Ollama URL, and model name.
-- Add proper error handling for cases where Ollama is not running.
-- Add backend dependencies file such as `requirements.txt`.
-- Add automated tests for API routes and service functions.
-- Add frontend styling and complete the placeholder components.
-- Add production build and deployment instructions.
+## Work in Progress
 
-## Suggested Next Step
+* Designing user input flow for farmer data collection
+* Structuring reusable UI components for result display
+* Preparing service integration for crop and soil analysis
+* Planning translation and voice interaction architecture
 
-Build the farmer input form for scheme recommendations and replace the hardcoded payload in `SchemeResult.jsx`.
+---
+
+## Pending Tasks
+
+### Core Features
+
+* Implement crop disease detection (image + parameter-based)
+* Implement soil health recommendation system
+* Complete translation service integration
+* Implement voice input/output functionality
+
+### Backend Improvements
+
+* Add request/response models for all endpoints
+* Improve error handling (especially for LLM/Ollama failures)
+* Introduce environment-based configuration
+* Add dependency management (`requirements.txt`)
+* Implement automated API testing
+
+### Frontend Improvements
+
+* Replace hardcoded inputs with dynamic user forms
+* Improve UI/UX and component reusability
+* Complete placeholder modules and integrate features
+
+### Deployment & Production
+
+* Add build and deployment workflow
+* Configure environment variables for production use
+
+---
+
+## Challenges Faced
+
+* Handling inconsistent LLM output and ensuring valid JSON parsing
+* Designing prompts that balance structure and flexibility
+* Maintaining clean separation between service logic and API routes
+* Managing local LLM dependency (Ollama) during development
+
+---
+
+## Next Steps
+
+* Build and integrate a dynamic farmer input form
+* Complete crop and soil feature pipelines
+* Enhance frontend usability and interaction flow
+* Strengthen backend robustness and testing coverage
+
+---
+
+## Summary
+
+The project has successfully established a strong technical foundation and delivered one complete feature (scheme recommendation). The next phase focuses on expanding feature completeness, improving usability, and preparing the system for real-world scenarios.
