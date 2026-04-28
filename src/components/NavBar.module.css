@@ -1,0 +1,143 @@
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 64px;
+  background: rgba(250, 247, 240, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(196, 154, 42, 0.15);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brandIcon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.brandName {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--forest);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.brandTagline {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--earth-light);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.langPicker {
+  position: relative;
+}
+
+.langBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  background: var(--stone-pale);
+  border: 1px solid var(--stone-light);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  color: var(--charcoal-mid);
+  transition: var(--transition);
+}
+
+.langBtn:hover {
+  background: var(--cream-dark);
+  border-color: var(--stone);
+}
+
+.langNative {
+  font-weight: 500;
+}
+
+.langDropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 180px;
+  background: var(--cream);
+  border: 1px solid var(--stone-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  z-index: 200;
+}
+
+.langOption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 14px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 0.875rem;
+  color: var(--charcoal);
+  transition: var(--transition);
+}
+
+.langOption:hover {
+  background: var(--forest-pale);
+}
+
+.langActive {
+  background: var(--forest-pale);
+  color: var(--forest);
+}
+
+.langOptionNative {
+  font-weight: 500;
+}
+
+.langOptionLabel {
+  font-size: 0.75rem;
+  color: var(--charcoal-light);
+}
+
+.assistantBtn {
+  padding: 8px 18px;
+  background: var(--forest);
+  color: var(--cream);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: var(--transition);
+}
+
+.assistantBtn:hover {
+  background: var(--forest-mid);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(45, 80, 22, 0.25);
+}
+
+.assistantBtnActive {
+  background: var(--earth);
+}

@@ -1,0 +1,38 @@
+.wrapper {
+  padding: 0 0 0.5rem;
+}
+
+.label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--charcoal-light);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  padding: 7px 14px;
+  background: var(--cream);
+  border: 1px solid var(--stone-light);
+  border-radius: 99px;
+  font-size: 0.8rem;
+  color: var(--charcoal-mid);
+  transition: var(--transition);
+  white-space: nowrap;
+  max-width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chip:hover {
+  background: var(--forest-pale);
+  border-color: var(--forest-light);
+  color: var(--forest);
+}

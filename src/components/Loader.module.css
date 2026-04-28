@@ -1,0 +1,80 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 2rem;
+}
+
+.sprout {
+  position: relative;
+  width: 40px;
+  height: 60px;
+}
+
+.stem {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 0;
+  background: var(--forest-mid);
+  border-radius: 2px;
+  animation: grow 1.4s ease-out forwards;
+}
+
+.leaf1 {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  width: 18px;
+  height: 12px;
+  background: var(--forest-light);
+  border-radius: 50% 0 50% 0;
+  transform-origin: left center;
+  opacity: 0;
+  animation: leafLeft 1.4s ease-out 0.4s forwards;
+}
+
+.leaf2 {
+  position: absolute;
+  bottom: 22px;
+  right: 50%;
+  width: 18px;
+  height: 12px;
+  background: var(--forest-mid);
+  border-radius: 0 50% 0 50%;
+  transform-origin: right center;
+  opacity: 0;
+  animation: leafRight 1.4s ease-out 0.7s forwards;
+}
+
+@keyframes grow {
+  0% { height: 0; }
+  60% { height: 40px; }
+  100% { height: 36px; }
+}
+
+@keyframes leafLeft {
+  0% { opacity: 0; transform: rotate(-60deg) scale(0); }
+  60% { opacity: 1; transform: rotate(10deg) scale(1.05); }
+  100% { opacity: 1; transform: rotate(-5deg) scale(1); }
+}
+
+@keyframes leafRight {
+  0% { opacity: 0; transform: rotate(60deg) scale(0); }
+  60% { opacity: 1; transform: rotate(-10deg) scale(1.05); }
+  100% { opacity: 1; transform: rotate(5deg) scale(1); }
+}
+
+.message {
+  font-size: 0.9rem;
+  color: var(--charcoal-light);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}

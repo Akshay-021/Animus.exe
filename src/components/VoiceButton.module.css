@@ -1,0 +1,67 @@
+.btn {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--forest);
+  color: var(--cream);
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--forest-mid);
+  transform: scale(1.06);
+  box-shadow: 0 6px 20px rgba(45, 80, 22, 0.3);
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.recording {
+  background: var(--clay);
+}
+
+.recording:hover:not(:disabled) {
+  background: var(--clay-light);
+  box-shadow: 0 6px 20px rgba(196, 98, 45, 0.3);
+}
+
+.stopIcon {
+  width: 14px;
+  height: 14px;
+  background: var(--cream);
+  border-radius: 3px;
+}
+
+.pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--clay-light);
+  animation: pulse 1.2s ease-out infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

@@ -1,0 +1,96 @@
+.zone {
+  border: 1.5px dashed var(--stone-light);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  cursor: pointer;
+  transition: var(--transition);
+  background: var(--stone-pale);
+}
+
+.zone:hover, .dragging {
+  border-color: var(--forest-light);
+  background: var(--forest-pale);
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.zoneContent {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.zoneIcon {
+  flex-shrink: 0;
+  color: var(--charcoal-light);
+  transition: var(--transition);
+}
+
+.zone:hover .zoneIcon {
+  color: var(--forest-mid);
+}
+
+.zoneText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.zoneMain {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--charcoal-mid);
+}
+
+.zoneSub {
+  font-size: 0.75rem;
+  color: var(--charcoal-light);
+}
+
+.preview {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--stone-pale);
+  border: 1px solid var(--stone-light);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+}
+
+.previewImg {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: calc(var(--radius-md) - 4px);
+}
+
+.previewLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--forest);
+  flex: 1;
+}
+
+.removeBtn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--charcoal);
+  border: none;
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.removeBtn:hover {
+  background: var(--clay);
+}
