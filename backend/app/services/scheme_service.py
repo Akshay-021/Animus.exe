@@ -3,6 +3,7 @@ import os
 
 from app.services.ollama_service import ask_ollama
 from app.services.prompts import scheme_prompt
+from app.services.filter_service import filter_schemes
 
 SCHEME_PATH = os.path.abspath(
     os.path.join(os.path.dirname(__file__), "../../../data/schemes/processed_schemes.json")
@@ -24,7 +25,10 @@ def safe_json(response):
 def get_scheme(user_data):
     schemes = load_schemes()
 
-    prompt = scheme_prompt(user_data, schemes)
+    # 🔥 KEY CHANGE: filter before LLM
+    filtered_schemes = filter_schemes(schemes, user_data)
+
+    prompt = scheme_prompt(user_data, filtered_schemes)
 
     response = ask_ollama(prompt)
 

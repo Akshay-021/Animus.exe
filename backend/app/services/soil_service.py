@@ -1,10 +1,8 @@
-from app.services.ollama_service import ask_ollama
-from app.services.prompts import soil_prompt
-from app.utils.helpers import safe_json_load
+from prompts import soil_prompt
+from utils.ollama_client import call_ollama
+import json
 
-
-def analyze_soil(user_data, image_features):
-    prompt = soil_prompt(user_data, image_features)
-    response = ask_ollama(prompt)
-
-    return safe_json_load(response)
+def analyze_soil(data):
+    prompt = soil_prompt(data)
+    response = call_ollama(prompt)
+    return json.loads(response)
