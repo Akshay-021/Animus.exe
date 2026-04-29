@@ -1,4 +1,4 @@
-from app.services.ollama_service import ask_ollama
+from .ollama_service import ask_ollama
 
 
 def translate_text(text, target_language="English"):

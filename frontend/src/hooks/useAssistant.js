@@ -1,40 +1,39 @@
-// frontend/src/hooks/useAssistant.js
-
-import { useState } from "react"
+import { useState } from "react";
+import { sendVoice } from "../services/api";
+import { formatAssistantResponse } from "../utils/helpers";
 
 export default function useAssistant() {
-  const [messages, setMessages] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [messages, setMessages] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const sendAudio = async (blob) => {
-    setLoading(true)
+    setLoading(true);
 
     try {
-      const formData = new FormData()
-      formData.append("file", blob)
+      const data = await sendVoice(blob);
 
-      const res = await fetch("http://localhost:8000/assistant/voice", {
-        method: "POST",
-        body: formData
-      })
-
-      const data = await res.json()
-
-      setMessages(prev => [
+      setMessages((prev) => [
         ...prev,
-        { type: "user", text: "🎤 Voice input" },
-        { type: "bot", text: JSON.stringify(data.result || data, null, 2) }
-      ])
-
-    } catch (err) {
-      setMessages(prev => [
+        { type: "user", text: data.transcription || "Voice input" },
+        { type: "bot", text: formatAssistantResponse(data) },
+      ]);
+    } catch (error) {
+      setMessages((prev) => [
         ...prev,
-        { type: "bot", text: "Error connecting to backend" }
-      ])
+        { type: "bot", text: error.message || "Error connecting to backend" },
+      ]);
+    } finally {
+      setLoading(false);
     }
+  };
 
-    setLoading(false)
-  }
+  const sendMessage = (text) => {
+    setMessages((prev) => [
+      ...prev,
+      { type: "user", text },
+      { type: "bot", text: "Use voice recording to send this request to JanVaani AI." },
+    ]);
+  };
 
-  return { messages, sendAudio, loading }
+  return { messages, sendAudio, sendMessage, loading };
 }

@@ -1,7 +1,9 @@
 from fastapi import APIRouter, UploadFile, File, Form
 import tempfile
+import os
+from pathlib import Path
 
-from app.services.crop_service import analyze_crop
+from ..services.crop_service import analyze_crop
 
 router = APIRouter(prefix="/crop", tags=["crop"])
 
@@ -22,21 +24,30 @@ async def crop(
 
     # OPTIONAL
     previous_crop: str = Form(None),
-    irrigation_type: str = Form(None)
+    irrigation_type: str = Form(None),
+    use_llm: bool = Form(True)
 ):
-    with tempfile.NamedTemporaryFile(delete=False) as temp:
-        temp.write(await file.read())
-        image_path = temp.name
+    image_path = None
 
-    user_data = {
-        "crop_type": crop_type,
-        "location": location,
-        "crop_stage": crop_stage,
-        "symptoms": symptoms,
-        "fertilizer_usage": fertilizer_usage,
-        "pesticide_usage": pesticide_usage,
-        "previous_crop": previous_crop,
-        "irrigation_type": irrigation_type
-    }
+    try:
+        suffix = Path(file.filename or "").suffix
+        with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as temp:
+            temp.write(await file.read())
+            image_path = temp.name
 
-    return analyze_crop(image_path, user_data)
+        user_data = {
+            "crop_type": crop_type,
+            "location": location,
+            "crop_stage": crop_stage,
+            "symptoms": symptoms,
+            "fertilizer_usage": fertilizer_usage,
+            "pesticide_usage": pesticide_usage,
+            "previous_crop": previous_crop,
+            "irrigation_type": irrigation_type,
+            "image_filename": file.filename
+        }
+
+        return analyze_crop(image_path, user_data, use_llm=use_llm)
+    finally:
+        if image_path and os.path.exists(image_path):
+            os.remove(image_path)

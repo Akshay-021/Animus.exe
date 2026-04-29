@@ -3,12 +3,12 @@ import tempfile
 import subprocess
 import os
 
-from app.services.assistant_service import extract_farmer_data
-from app.services.intent_service import classify_intent
-from app.services.scheme_service import get_scheme
-from app.services.crop_service import analyze_crop
-from app.services.soil_service import analyze_soil
-from app.services.translation_service import to_kannada
+from ..services.assistant_service import extract_farmer_data
+from ..services.intent_service import classify_intent
+from ..services.scheme_service import get_scheme
+from ..services.crop_service import analyze_crop
+from ..services.soil_service import analyze_soil
+from ..services.translation_service import to_kannada
 
 router = APIRouter(prefix="/assistant", tags=["assistant"])
 

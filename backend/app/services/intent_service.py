@@ -1,7 +1,7 @@
 # app/services/intent_service.py
 
-from app.services.ollama_service import ask_ollama
-from app.services.prompts import intent_prompt
+from .ollama_service import ask_ollama
+from .prompts import intent_prompt
 import json
 
 

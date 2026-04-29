@@ -1,5 +1,5 @@
-from app.services.ollama_service import ask_ollama
-from app.services.prompts import farmer_extraction_prompt
+from .ollama_service import ask_ollama
+from .prompts import farmer_extraction_prompt
 import json
 
 

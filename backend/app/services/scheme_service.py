@@ -1,9 +1,9 @@
 import json
 import os
 
-from app.services.ollama_service import ask_ollama
-from app.services.prompts import scheme_prompt
-from app.services.filter_service import filter_schemes
+from .ollama_service import ask_ollama
+from .prompts import scheme_prompt
+from .filter_service import filter_schemes
 
 SCHEME_PATH = os.path.abspath(
     os.path.join(os.path.dirname(__file__), "../../../data/schemes/processed_schemes.json")

@@ -1,52 +1,60 @@
-import { useState } from "react"
-import ChatWindow from "../components/assistant/ChatWindow"
-import useAssistant from "../hooks/useAssistant"
+import { useState } from "react";
+import ChatWindow from "../components/assistant/ChatWindow";
+import SuggestionChips from "../components/assistant/SuggestionChips";
+import Loader from "../components/common/Loader";
+import useAssistant from "../hooks/useAssistant";
 
 export default function Assistant() {
-  const { messages, sendAudio, loading } = useAssistant()
-  const [recording, setRecording] = useState(false)
-  const [recorder, setRecorder] = useState(null)
+  const { messages, sendAudio, sendMessage, loading } = useAssistant();
+  const [recording, setRecording] = useState(false);
+  const [recorder, setRecorder] = useState(null);
 
   const startRecording = async () => {
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
-    const mediaRecorder = new MediaRecorder(stream)
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const mediaRecorder = new MediaRecorder(stream);
+    const chunks = [];
 
-    let chunks = []
-
-    mediaRecorder.ondataavailable = e => chunks.push(e.data)
-
+    mediaRecorder.ondataavailable = (event) => chunks.push(event.data);
     mediaRecorder.onstop = () => {
-      const blob = new Blob(chunks, { type: "audio/aac" })
-      sendAudio(blob)
-    }
+      stream.getTracks().forEach((track) => track.stop());
+      const blob = new Blob(chunks, { type: "audio/aac" });
+      sendAudio(blob);
+    };
 
-    mediaRecorder.start()
-    setRecorder(mediaRecorder)
-    setRecording(true)
-  }
+    mediaRecorder.start();
+    setRecorder(mediaRecorder);
+    setRecording(true);
+  };
 
   const stopRecording = () => {
-    recorder.stop()
-    setRecording(false)
-  }
+    recorder?.stop();
+    setRecording(false);
+  };
 
   return (
-    <div className="p-4 space-y-4">
-      <h1 className="text-xl font-bold">🎤 JanVaani Assistant</h1>
+    <div className="page two-column">
+      <section className="panel">
+        <p className="eyebrow">Voice AI</p>
+        <h1>Assistant</h1>
+        <p className="muted">
+          Ask about farmer schemes, crop support, or soil guidance using voice.
+        </p>
+        <SuggestionChips onSelect={sendMessage} />
 
-      <ChatWindow messages={messages} />
-
-      {!recording ? (
-        <button onClick={startRecording} className="bg-green-600 text-white p-3 rounded">
-          Start Talking
+        <button
+          className={recording ? "primary danger" : "primary"}
+          onClick={recording ? stopRecording : startRecording}
+          disabled={loading}
+        >
+          {recording ? "Stop recording" : "Start recording"}
         </button>
-      ) : (
-        <button onClick={stopRecording} className="bg-red-600 text-white p-3 rounded">
-          Stop
-        </button>
-      )}
 
-      {loading && <p>Processing...</p>}
+        {loading && <Loader text="Processing voice..." />}
+      </section>
+
+      <section className="panel chat-panel">
+        <ChatWindow messages={messages} />
+      </section>
     </div>
-  )
+  );
 }

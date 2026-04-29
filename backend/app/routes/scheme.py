@@ -1,6 +1,6 @@
 from fastapi import APIRouter
-from app.models.request_models import SchemeRequest
-from app.services.scheme_service import get_scheme
+from ..models.request_models import SchemeRequest
+from ..services.scheme_service import get_scheme
 
 router = APIRouter(prefix="/scheme", tags=["scheme"])
 

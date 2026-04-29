@@ -101,7 +101,7 @@ Rules:
 # 🌿 CROP PROMPT
 def crop_prompt(prediction, confidence, user_data):
     return f"""
-You are an expert agricultural advisor.
+You are an expert agricultural advisor. Return compact JSON only.
 
 Model Prediction:
 Disease: {prediction}
@@ -110,21 +110,10 @@ Confidence: {confidence}
 Farmer Inputs:
 {user_data}
 
-Important:
-- Model can be WRONG
-- Use farmer inputs to VERIFY or CORRECT
-
 Tasks:
-1. Final diagnosis
-2. Confidence (high/medium/low)
-3. Explanation
-4. Treatment
-5. Prevention
+Diagnose the likely crop disease. The model can be wrong; verify with farmer inputs.
 
-STRICT OUTPUT:
-Return ONLY JSON.
-
-Format:
+JSON format:
 {{
   "final_disease": "",
   "confidence": "",
@@ -134,34 +123,24 @@ Format:
 }}
 
 Rules:
-- Prefer correction over blind trust
-- Keep advice practical
+- Return ONLY JSON, no markdown, no explanation outside JSON
+- Keep explanation under 30 words
+- Give 2-3 treatment steps and 2-3 prevention steps
 """
 
 
 # 🌱 SOIL PROMPT
 def soil_prompt(user_data):
     return f"""
-You are an expert agricultural soil scientist.
+You are an expert agricultural soil scientist. Return compact JSON only.
 
 Soil Data:
 {user_data}
 
 Tasks:
-1. Soil health score (0–100)
-2. Soil condition (poor/moderate/good)
-3. Problems
-4. Causes
-5. Crop suitability
-6. Recommended crops
-7. Fertilizer advice
-8. Improvement steps
-9. Precautions
+Analyze soil health from farmer inputs. Do not invent lab values like pH/NPK.
 
-STRICT OUTPUT:
-Return ONLY JSON.
-
-Format:
+JSON format:
 {{
   "soil_health_score": "",
   "soil_condition": "",
@@ -175,8 +154,11 @@ Format:
 }}
 
 Rules:
-- Use simple language
+- Return ONLY JSON, no markdown, no explanation outside JSON
+- Use simple farmer-friendly language
+- Keep each list to 2-3 short items
 - Prefer low-cost solutions
+- Mention when a soil test is needed for confirmation
 """
 
 

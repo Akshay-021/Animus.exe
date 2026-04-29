@@ -1,10 +1,10 @@
 # app/services/router_service.py
 
-from app.services.intent_service import classify_intent
-from app.services.assistant_service import extract_farmer_data
-from app.services.scheme_service import get_scheme
-from app.services.crop_service import analyze_crop
-from app.services.soil_service import analyze_soil
+from .intent_service import classify_intent
+from .assistant_service import extract_farmer_data
+from .scheme_service import get_scheme
+from .crop_service import analyze_crop
+from .soil_service import analyze_soil
 
 
 def route_query(text, extra_inputs=None):

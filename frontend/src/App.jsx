@@ -1,10 +1,20 @@
-import { BrowserRouter } from "react-router-dom"
-import AppRoutes from "./routes/AppRoutes"
+import { BrowserRouter } from "react-router-dom";
+import NavBar from "./components/common/NavBar";
+import { AppProvider } from "./context/AppContext";
+import { AssistantProvider } from "./context/AssistantContext";
+import AppRoutes from "./routes/AppRoutes";
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <AppRoutes />
-    </BrowserRouter>
-  )
+    <AppProvider>
+      <AssistantProvider>
+        <BrowserRouter>
+          <NavBar />
+          <main className="app-shell">
+            <AppRoutes />
+          </main>
+        </BrowserRouter>
+      </AssistantProvider>
+    </AppProvider>
+  );
 }

@@ -2,100 +2,88 @@
 
 Last Updated: 29 April 2026
 
+This list includes empty files in the project workspace. Dependency folders, build output, caches, virtual environments, and runtime log files are excluded.
+
 ---
 
-## Empty Files by Category
+## Backend
 
-### Frontend - Components - Assistant (3 files)
-- `frontend/src/components/assistant/ChatWindow.jsx`
-- `frontend/src/components/assistant/MessageBubble.jsx`
-- `frontend/src/components/assistant/SuggestionChips.jsx`
+### Package Marker Files (4 files)
+- `backend/app/__init__.py`
+- `backend/app/routes/__init__.py`
+- `backend/app/services/__init__.py`
+- `backend/models/__init__.py`
 
-### Frontend - Components - Common (3 files)
-- `frontend/src/components/common/LanguageSelector.jsx`
-- `frontend/src/components/common/Loader.jsx`
-- `frontend/src/components/common/NavBar.jsx`
+---
 
-### Frontend - Components - Input (2 files)
-- `frontend/src/components/input/ImageUpload.jsx`
-- `frontend/src/components/input/TextInput.jsx`
+## Active Frontend
 
-### Frontend - Components - Results (3 files)
-- `frontend/src/components/results/CropCard.jsx`
-- `frontend/src/components/results/SchemeCard.jsx`
-- `frontend/src/components/results/SoilCard.jsx`
+No empty files remain in `frontend/src`.
 
-### Frontend - Components - Voice (1 file)
-- `frontend/src/components/voice/AudioPlayer.jsx`
+---
 
-### Frontend - Context (2 files)
-- `frontend/src/context/AppContext.jsx`
-- `frontend/src/context/AssistantContext.jsx`
+## Frontend Backup
 
-### Frontend - Hooks (2 files)
-- `frontend/src/hooks/useAssistant.js`
-- `frontend/src/hooks/useVoice.js`
+### Components - Assistant (3 files)
+- `frontend_backup/src/components/assistant/ChatWindow.jsx`
+- `frontend_backup/src/components/assistant/MessageBubble.jsx`
+- `frontend_backup/src/components/assistant/SuggestionChips.jsx`
 
-### Frontend - Pages (4 files)
-- `frontend/src/pages/Assistant.jsx`
-- `frontend/src/pages/CropResult.jsx`
-- `frontend/src/pages/Home.jsx`
-- `frontend/src/pages/SoilResult.jsx`
+### Components - Common (3 files)
+- `frontend_backup/src/components/common/LanguageSelector.jsx`
+- `frontend_backup/src/components/common/Loader.jsx`
+- `frontend_backup/src/components/common/NavBar.jsx`
 
-### Frontend - Services (2 files)
-- `frontend/src/services/assistant.js`
-- `frontend/src/services/translate.js`
+### Components - Input (2 files)
+- `frontend_backup/src/components/input/ImageUpload.jsx`
+- `frontend_backup/src/components/input/TextInput.jsx`
 
-### Frontend - Utils (2 files)
-- `frontend/src/utils/constants.js`
-- `frontend/src/utils/helpers.js`
+### Components - Results (2 files)
+- `frontend_backup/src/components/results/CropCard.jsx`
+- `frontend_backup/src/components/results/SoilCard.jsx`
+
+### Components - Voice (1 file)
+- `frontend_backup/src/components/voice/AudioPlayer.jsx`
+
+### Context (2 files)
+- `frontend_backup/src/context/AppContext.jsx`
+- `frontend_backup/src/context/AssistantContext.jsx`
+
+### Hooks (2 files)
+- `frontend_backup/src/hooks/useAssistant.js`
+- `frontend_backup/src/hooks/useVoice.js`
+
+### Pages (3 files)
+- `frontend_backup/src/pages/CropResult.jsx`
+- `frontend_backup/src/pages/Home.jsx`
+- `frontend_backup/src/pages/SoilResult.jsx`
+
+### Services (2 files)
+- `frontend_backup/src/services/translate.js`
+- `frontend_backup/src/services/voice.js`
+
+### Utils (2 files)
+- `frontend_backup/src/utils/constants.js`
+- `frontend_backup/src/utils/helpers.js`
 
 ---
 
 ## Summary Statistics
 
-| Category | Empty Files | Total |
-|----------|------------|-------|
-| Components - Assistant | 3 | 3 |
-| Components - Common | 3 | 3 |
-| Components - Input | 2 | 2 |
-| Components - Results | 3 | 3 |
-| Components - Voice | 1 | 1 |
-| Context | 2 | 2 |
-| Hooks | 2 | 2 |
-| Pages | 4 | 4 |
-| Services | 2 | 2 |
-| Utils | 2 | 2 |
-| **TOTAL FRONTEND** | **25** | **25** |
-| **TOTAL BACKEND** | **0** | **0** |
-| **TOTAL PROJECT** | **25** | **25** |
+| Area | Empty Files |
+|------|------------:|
+| Backend | 4 |
+| Active Frontend | 0 |
+| Frontend Backup | 22 |
+| **Total** | **26** |
 
 ---
 
-## Files With Content (Implemented)
+## Excluded From This List
 
-### Backend (11 files)
-✅ `backend/app/models/request_models.py`
-✅ `backend/app/models/response_models.py`
-✅ `backend/app/routes/crop.py`
-✅ `backend/app/routes/scheme.py`
-✅ `backend/app/routes/soil.py`
-✅ `backend/app/routes/translate.py`
-✅ `backend/app/routes/voice.py`
-✅ `backend/app/services/image_service.py`
-✅ `backend/app/services/translation_service.py`
-✅ `backend/app/services/weather_service.py`
-✅ `backend/app/utils/logger.py`
-
-### Frontend (11 files)
-✅ `frontend/package.json`
-✅ `frontend/vite.config.js`
-✅ `frontend/src/App.jsx`
-✅ `frontend/src/main.jsx`
-✅ `frontend/src/pages/SchemeResult.jsx`
-✅ `frontend/src/routes/AppRoutes.jsx`
-✅ `frontend/src/services/api.js`
-✅ `frontend/src/services/voice.js`
-✅ `frontend/src/components/voice/VoiceButton.jsx`
-✅ `data/schemes/raw_schemes.json`
-✅ `README.md`
+- `.git/`
+- `node_modules/`
+- `dist/`
+- `__pycache__/`
+- `lol/` virtual environment
+- Runtime log files such as `frontend/vite-dev.err.log`
